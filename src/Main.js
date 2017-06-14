@@ -7,11 +7,11 @@ import NoteForm from './NoteForm'
 
 const Main = () => {
     return (
-        <main className="Main">
+        <div className="Main">
             <Sidebar />
             <NoteList />
             <NoteForm />
-        </main>
+        </div>
     )
 }
 
