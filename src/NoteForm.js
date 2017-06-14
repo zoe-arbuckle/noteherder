@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import './NoteForm.css'
 
 class NoteForm extends Component {
-    constructor(){
+    constructor() {
         super()
 
         this.state = {
@@ -14,12 +14,12 @@ class NoteForm extends Component {
         this.updateTitle = this.updateTitle.bind(this)
     }
 
-    updateTitle(e){
-        this.setState({ title: e.target.value})
+    updateTitle(e) {
+        this.setState({ title: e.target.value })
     }
 
-    updateText(e){
-        this.setState({ text: e.target.value})
+    updateText(e) {
+        this.setState({ text: e.target.value })
     }
 
     render() {
@@ -27,10 +27,16 @@ class NoteForm extends Component {
             <div className="NoteForm">
                 <form>
                     <p>
-                        <input type="text" name="title" placeholder="Title your note" value={this.state.title} onChange={this.updateTitle}/>
+                        <input type="text" name="title" placeholder="Title your note" value={this.state.title} onChange={this.updateTitle} />
                     </p>
+                    
                     <p>
-                        <textarea name="body" value={this.state.text} cols="30" rows="10" placeholder="Just start typing..." onChange={this.updateText}></textarea>
+                        <textarea name="body"
+                            value={this.state.text}
+                            cols="30" rows="10"
+                            placeholder="Just start typing..."
+                            onChange={this.updateText}>
+                        </textarea>
                     </p>
                 </form>
             </div>
