@@ -1,3 +1,21 @@
+i.fa-trash-o {
+  cursor: pointer;
+  color: gray;
+  vertical-align: middle;
+  margin-left: 1em; }
+
+i.fa-trash-o:hover {
+    color: #999; }
+
+.delete.button{
+  background-color: whitesmoke;
+  border: 1px solid darkgray;
+  height: 2rem;
+  float: right;
+  margin-right: 20px;
+  margin-top: 5px;
+}
+
 .NoteList {
   border-left: 1px solid #eee;
   border-right: 1px solid #eee;
