@@ -12,32 +12,38 @@ class App extends Component {
           id: 'note-1',
           title: "React Practice",
           text: "Amazing",
-          selected: false,
         },
         'note-2': {
           id: 'note-2',
           title: "Master Coders",
           text: "Angie, Zoe, Kai",
-          selected: false,
         },
       },
     }
   }
 
-  delete() {
+  delete = () => {
     if (this.state.notes) {
-      let state = [...this.state.notes]
-      state = state.slice(1) //fix so it doesn't apply to only arrays
-
-      this.setState({ notes: state })
+      const notes = {...this.state.notes}
     }
+  }
+
+  saveNote = (note) => {
+    if(!note.id){
+      note.id = `note-${Date.now()}`
+    }
+    const notes = {...this.state.notes}
+    notes[note.id] = note
+
+    this.setState({ notes: notes })
   }
 
   render() {
     return (
       <div className="App">
         <Main notes={this.state.notes} 
-            delete={this.delete.bind(this)}/>
+            delete={this.delete}
+            saveNote={this.saveNote}/>
       </div>
     );
   }

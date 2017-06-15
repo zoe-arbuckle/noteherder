@@ -12,7 +12,7 @@ const Main = (props) => {
             <Sidebar />
             <NoteList notes = {props.notes} 
                 delete={props.delete}/>
-            <NoteForm notes = {props.notes}/>
+            <NoteForm saveNote={props.saveNote}/>
         </div>
     )
 }

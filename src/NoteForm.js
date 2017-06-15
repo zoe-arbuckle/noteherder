@@ -3,28 +3,22 @@ import './NoteForm.css'
 
 class NoteForm extends Component {
     constructor(props) {
-        super()
+        super(props)
 
         this.state = {
             id: '',
             title: '',
             text: '',
-            selected: true,
         }
-
-        this.updateText = this.updateText.bind(this)
-        this.updateTitle = this.updateTitle.bind(this)
     }
 
-    updateTitle(e) {
-        this.setState({ title: e.target.value })
+    handleChanges = (e) => {
+        this.props.saveNote({title: 'Created from noteForm'})
+        this.setState({title: e.target.value})
+        
     }
 
-    updateText(props, e) {
-        this.setState({ text: e.target.value})
-    }
-
-    render(props) {
+    render() {
         return (
             <div className="NoteForm">
                 <form>
@@ -33,7 +27,7 @@ class NoteForm extends Component {
                             name="title" 
                             placeholder="Title your note" 
                             value={this.state.title} 
-                            onChange={this.updateTitle} />
+                            onChange={this.handleChanges} />
                     </p>
 
                     <p>
@@ -41,7 +35,7 @@ class NoteForm extends Component {
                             value={this.state.text}
                             cols="30" rows="10"
                             placeholder="Just start typing..."
-                            onChange={this.updateText.bind(this, this.props)}>
+                            onChange={this.handleChanges}>
                         </textarea>
                     </p>
                 </form>
