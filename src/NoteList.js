@@ -5,7 +5,7 @@ import Note from './Note'
 
 const NoteList = (props) => {
     return (
-        <div className="NoteList">
+        <div className="NoteList" id="NoteList">
             <h3>Notes <button className="delete button">
                 <i className="fa fa-trash-o"></i>
             </button>

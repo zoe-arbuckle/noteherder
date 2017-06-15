@@ -1,11 +1,12 @@
 import React from 'react'
+import ReactDom from 'react-dom'
 import './Main.css'
 
 import Sidebar from './Sidebar'
 import NoteList from './NoteList'
 import NoteForm from './NoteForm'
 
-const noteArr = [
+let noteArr = [
     {
         title: "Citizens of distant epochs",
         text: "Sea of Tranquility the ash of stellar alchemy vastness is bearable only through love bits of moving fluff are creatures of the cosmos, consciousness a still more glorious dawn awaits two ghostly white figures in coveralls and helmets are soflty dancing tingling of the spine, concept of the number one brain is the seed of intelligence are creatures of the cosmos?",
@@ -23,14 +24,28 @@ const noteArr = [
 
 ]
 
+const list = <NoteList noteArr={noteArr} />
+
+function addToList(obj){
+    noteArr.push(obj)
+    updateList()
+}
+
+function updateList(){
+    ReactDom.render(list, document.getElementById('NoteList'))
+}
+
 const Main = () => {
+
     return (
         <div className="Main">
             <Sidebar />
             <NoteList noteArr = {noteArr}/>
-            <NoteForm />
+            <NoteForm noteArr = {noteArr} addToList = {addToList}/>
         </div>
     )
 }
+
+
 
 export default Main
