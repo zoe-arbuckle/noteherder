@@ -14,11 +14,10 @@ const NoteList = (props) => {
             <ul id="notes">
                 {(props.noteArr) ?
                     Object.keys(props.noteArr).map((noteId) =>
-                        <Note noteInfo={props.noteArr[noteId]} key={noteId} />)
+                        <Note noteInfo={props.noteArr[noteId]} 
+                            key={noteId}/>)
                     : null
-
                 }
-
             </ul>
         </div>
     )

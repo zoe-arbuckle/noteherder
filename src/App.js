@@ -9,11 +9,14 @@ class App extends Component {
     this.state = {
       notes: [
         {
+          id: '1',
           title: "Citizens of distant epochs",
           text: "Sea of Tranquility the ash of stellar alchemy vastness is bearable only through love bits of moving fluff are creatures of the cosmos, consciousness a still more glorious dawn awaits two ghostly white figures in coveralls and helmets are soflty dancing tingling of the spine, concept of the number one brain is the seed of intelligence are creatures of the cosmos?",
+          selected: false,
         },
+      ],
 
-      ]
+      max: 1,
     }
   }
 
@@ -22,14 +25,15 @@ class App extends Component {
       let state = [...this.state.notes]
       state = state.slice(1)
 
-      this.setState({ notes: state }, console.log(this.state))
+      this.setState({ notes: state })
     }
   }
 
   render() {
     return (
       <div className="App">
-        <Main notes={this.state.notes} delete={this.delete.bind(this)} />
+        <Main notes={this.state.notes} 
+            delete={this.delete.bind(this)}/>
       </div>
     );
   }
