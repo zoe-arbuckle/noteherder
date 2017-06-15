@@ -14,7 +14,7 @@ const NoteList = (props) => {
             <ul id="notes">
                 {(props.notes) ?
                     Object.keys(props.notes).map((noteId) =>
-                        <Note noteInfo={props.notes[noteId]} 
+                        <Note note={props.notes[noteId]} 
                             key={noteId}/>)
                     : null
                 }

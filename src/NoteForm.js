@@ -6,7 +6,7 @@ class NoteForm extends Component {
         super()
 
         this.state = {
-            id: '1',
+            id: '',
             title: '',
             text: '',
             selected: true,
