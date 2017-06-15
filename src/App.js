@@ -11,12 +11,12 @@ class App extends Component {
         'note-1': {
           id: 'note-1',
           title: "React Practice",
-          text: "Amazing",
+          body: "Amazing",
         },
         'note-2': {
           id: 'note-2',
           title: "Master Coders",
-          text: "Angie, Zoe, Kai",
+          body: "Angie, Zoe, Kai",
         },
       },
     }

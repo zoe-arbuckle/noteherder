@@ -8,7 +8,7 @@ const Note = ({ note }) => {
                     {note.title}    
                 </div>
                 <div className="note-body">
-                    <p>{note.text}</p>
+                    <p>{note.body}</p>
                 </div>
             </div>
         </li>

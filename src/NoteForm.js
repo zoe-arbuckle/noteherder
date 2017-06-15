@@ -6,16 +6,23 @@ class NoteForm extends Component {
         super(props)
 
         this.state = {
-            id: '',
+            note: this.blankNote(),
+        }
+    }
+
+    blankNote = () => {
+        return {
+            id: null,
             title: '',
-            text: '',
+            body: '',
         }
     }
 
     handleChanges = (e) => {
-        this.props.saveNote({title: 'Created from noteForm'})
-        this.setState({title: e.target.value})
-        
+        const note = this.state.note
+        note[e.target.name] = e.target.value
+
+        this.setState({note: note}, () => {this.props.saveNote(this.state.note)})
     }
 
     render() {
@@ -32,7 +39,7 @@ class NoteForm extends Component {
 
                     <p>
                         <textarea name="body"
-                            value={this.state.text}
+                            value={this.state.body}
                             cols="30" rows="10"
                             placeholder="Just start typing..."
                             onChange={this.handleChanges}>
