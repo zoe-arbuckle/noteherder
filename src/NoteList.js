@@ -12,8 +12,8 @@ const NoteList = (props) => {
             </h3>
 
             <ul id="notes">
-                {props.noteArr.map((noteInfo, i) =>
-                    <Note noteInfo={noteInfo} key={i} />)}
+                {Object.keys(props.noteArr).map((noteId) =>
+                    <Note noteInfo={props.noteArr[noteId]} key={noteId} />)}
 
             </ul>
         </div>
