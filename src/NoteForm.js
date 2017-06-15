@@ -5,10 +5,6 @@ class NoteForm extends Component {
     constructor(props) {
         super()
 
-        NoteForm.propTypes = {
-            addToList: React.PropTypes.func,
-        }
-
         this.state = {
             title: '',
             text: '',
@@ -23,9 +19,7 @@ class NoteForm extends Component {
     }
 
     updateText(props, e) {
-        this.setState({ text: e.target.value}, () => {
-            props.addToList(this.state)
-        })
+        this.setState({ text: e.target.value})
     }
 
     render(props) {
