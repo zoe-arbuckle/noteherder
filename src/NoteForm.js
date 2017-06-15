@@ -25,26 +25,33 @@ class NoteForm extends Component {
         this.setState({note: note}, () => {this.props.saveNote(this.state.note)})
     }
 
+    handleSubmit = (ev) => {
+        ev.preventDefault()
+        this.setState({note: this.blankNote() })
+    }
+
     render() {
         return (
             <div className="NoteForm">
-                <form>
+                <form onSubmit={this.handleSubmit}>
                     <p>
                         <input type="text" 
                             name="title" 
                             placeholder="Title your note" 
-                            value={this.state.title} 
+                            value={this.state.note.title} 
                             onChange={this.handleChanges} />
                     </p>
 
                     <p>
                         <textarea name="body"
-                            value={this.state.body}
+                            value={this.state.note.body}
                             cols="30" rows="10"
                             placeholder="Just start typing..."
                             onChange={this.handleChanges}>
                         </textarea>
                     </p>
+
+                    <button type="submit">Save and new</button>
                 </form>
             </div>
         )
