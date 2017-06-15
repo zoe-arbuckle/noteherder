@@ -7,23 +7,27 @@ class App extends Component {
     super()
 
     this.state = {
-      notes: [
-        {
-          id: '1',
-          title: "Citizens of distant epochs",
-          text: "Sea of Tranquility the ash of stellar alchemy vastness is bearable only through love bits of moving fluff are creatures of the cosmos, consciousness a still more glorious dawn awaits two ghostly white figures in coveralls and helmets are soflty dancing tingling of the spine, concept of the number one brain is the seed of intelligence are creatures of the cosmos?",
+      notes: {
+        'note-1': {
+          id: 'note-1',
+          title: "React Practice",
+          text: "Amazing",
           selected: false,
         },
-      ],
-
-      max: 1,
+        'note-2': {
+          id: 'note-2',
+          title: "Master Coders",
+          text: "Angie, Zoe, Kai",
+          selected: false,
+        },
+      },
     }
   }
 
   delete() {
     if (this.state.notes) {
       let state = [...this.state.notes]
-      state = state.slice(1)
+      state = state.slice(1) //fix so it doesn't apply to only arrays
 
       this.setState({ notes: state })
     }

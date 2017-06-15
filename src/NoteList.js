@@ -12,9 +12,9 @@ const NoteList = (props) => {
             </h3>
 
             <ul id="notes">
-                {(props.noteArr) ?
-                    Object.keys(props.noteArr).map((noteId) =>
-                        <Note noteInfo={props.noteArr[noteId]} 
+                {(props.notes) ?
+                    Object.keys(props.notes).map((noteId) =>
+                        <Note noteInfo={props.notes[noteId]} 
                             key={noteId}/>)
                     : null
                 }
