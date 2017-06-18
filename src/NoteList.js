@@ -11,7 +11,7 @@ const NoteList = (props) => {
             </button>
             </h3>
 
-            <ul id="notes">
+            <ul id="notes" onClick={props.changeSelected}>
                 {(props.notes) ?
                     Object.keys(props.notes).map((noteId) =>
                         <Note note={props.notes[noteId]} 

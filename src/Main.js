@@ -11,7 +11,8 @@ const Main = (props) => {
         <div className="Main">
             <Sidebar />
             <NoteList notes = {props.notes} 
-                delete={props.delete}/>
+                delete={props.delete}
+                changeSelected={props.changeSelected}/>
             <NoteForm saveNote={props.saveNote}/>
         </div>
     )

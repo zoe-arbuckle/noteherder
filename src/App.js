@@ -7,6 +7,7 @@ class App extends Component {
     super()
 
     this.state = {
+      selected: null,
 
     }
   }
@@ -14,7 +15,16 @@ class App extends Component {
   delete = () => {
     if (this.state.notes) {
       const notes = {...this.state.notes}
+
+      delete notes[this.state.selected]
+
+      this.setState({ notes: notes, selected: null, })
+
     }
+  }
+
+  changeSelected = (e) => {
+    this.setState({ selected: e.target.closest('.note').getAttribute('id')})
   }
 
   saveNote = (note) => {
@@ -32,7 +42,8 @@ class App extends Component {
       <div className="App">
         <Main notes={this.state.notes} 
             delete={this.delete}
-            saveNote={this.saveNote}/>
+            saveNote={this.saveNote}
+            changeSelected={this.changeSelected}/>
       </div>
     );
   }
