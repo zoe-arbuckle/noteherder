@@ -5,7 +5,7 @@ const Note = ({ note }) => {
         <li>
             <div className="note" id={note.id}>
                 <div className="note-title">
-                    {note.title} 
+                    {note.title}
                 </div>
                 <div className="note-body">
                     <p>{note.body}</p>

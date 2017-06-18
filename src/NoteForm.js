@@ -27,7 +27,11 @@ class NoteForm extends Component {
 
     handleSubmit = (ev) => {
         ev.preventDefault()
-        this.setState({note: this.blankNote() })
+        if(this.props.selected === null){
+            this.setState({note: this.blankNote() })
+        }else{
+            this.setState({note: this.props.notes[this.props.selected]})
+        }
     }
 
     render() {

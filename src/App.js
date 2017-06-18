@@ -19,7 +19,6 @@ class App extends Component {
       delete notes[this.state.selected]
 
       this.setState({ notes: notes, selected: null, })
-
     }
   }
 
@@ -41,6 +40,7 @@ class App extends Component {
     return (
       <div className="App">
         <Main notes={this.state.notes} 
+            selected={this.state.selected}
             delete={this.delete}
             saveNote={this.saveNote}
             changeSelected={this.changeSelected}/>
