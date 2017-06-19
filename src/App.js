@@ -14,7 +14,7 @@ class App extends Component {
 
   delete = () => {
     if (this.state.notes) {
-      const notes = {...this.state.notes}
+      const notes = { ...this.state.notes }
 
       delete notes[this.state.selected]
 
@@ -23,14 +23,16 @@ class App extends Component {
   }
 
   changeSelected = (e) => {
-    this.setState({ selected: e.target.closest('.note').getAttribute('id')})
+    if (e.target.closest('.note') !== null) {
+      this.setState({ selected: e.target.closest('.note').getAttribute('id') })
+    }
   }
 
   saveNote = (note) => {
-    if(!note.id){
+    if (!note.id) {
       note.id = `note-${Date.now()}`
     }
-    const notes = {...this.state.notes}
+    const notes = { ...this.state.notes }
     notes[note.id] = note
 
     this.setState({ notes: notes })
@@ -38,26 +40,26 @@ class App extends Component {
 
   createNewNote = () => {
     const note = {
-            id: `note-${Date.now()}`,
-            title: '',
-            body: '',
+      id: `note-${Date.now()}`,
+      title: '',
+      body: '',
     }
 
-    const notes = {...this.state.notes}
+    const notes = { ...this.state.notes }
     notes[note.id] = note
 
-    this.setState({ notes: notes, selected: note.id })    
+    this.setState({ notes: notes, selected: note.id })
   }
 
   render() {
     return (
       <div className="App">
-        <Main notes={this.state.notes} 
-            selected={this.state.selected}
-            delete={this.delete}
-            saveNote={this.saveNote}
-            changeSelected={this.changeSelected}
-            createNewNote={this.createNewNote}/>
+        <Main notes={this.state.notes}
+          selected={this.state.selected}
+          delete={this.delete}
+          saveNote={this.saveNote}
+          changeSelected={this.changeSelected}
+          createNewNote={this.createNewNote} />
       </div>
     );
   }
