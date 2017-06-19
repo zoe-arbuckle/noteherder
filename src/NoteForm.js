@@ -10,6 +10,12 @@ class NoteForm extends Component {
         }
     }
 
+    componentWillReceiveProps = (nextProps) => {
+        if(nextProps.selected !== this.state.note.id && nextProps.selected !== null){
+            this.setState({note: nextProps.notes[nextProps.selected]})
+        }
+    }
+
     blankNote = () => {
         return {
             id: null,
@@ -27,11 +33,7 @@ class NoteForm extends Component {
 
     handleSubmit = (ev) => {
         ev.preventDefault()
-        if(this.props.selected === null){
-            this.setState({note: this.blankNote() })
-        }else{
-            this.setState({note: this.props.notes[this.props.selected]})
-        }
+        this.setState({note: this.blankNote()})
     }
 
     render() {
