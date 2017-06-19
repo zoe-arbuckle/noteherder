@@ -1,9 +1,15 @@
 import React from 'react'
 import './SignIn.css'
 
-const SignIn = () => {
+const SignIn = ({ authHandler }) => {
+    const authenticate = () => {
+        authHandler({
+            uid: 'zarbuckl',
+        })
+    }
+
     return (
-        <button className="SignIn">
+        <button className="SignIn" onClick={authenticate}>
             SignIn
         </button>
     )

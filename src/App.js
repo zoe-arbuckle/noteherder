@@ -10,6 +10,7 @@ class App extends Component {
     super()
 
     this.state = {
+      uid: null,
       selected: null,
       notes: {
 
@@ -32,6 +33,8 @@ class App extends Component {
       delete notes[this.state.selected]
 
       this.setState({ notes: notes, selected: null, })
+
+      //TODO: fix
     }
   }
 
@@ -65,28 +68,35 @@ class App extends Component {
   }
 
   signedIn = () => {
-    return true
+    return (this.state.uid !== null)
+  }
+
+  authHandler = (user) => {
+    this.setState({uid: user.uid})
+  }
+
+  signOut = () => {
+    this.setState({uid: null})
   }
 
   renderMain() {
     return (
-    <div>
-      <SignOut />
-      <Main notes={this.state.notes}
-        selected={this.state.selected}
-        delete={this.delete}
-        saveNote={this.saveNote}
-        changeSelected={this.changeSelected}
-        createNewNote={this.createNewNote} />
-      
-    </div>
+      <div>
+        <SignOut signOut={this.signOut}/>
+        <Main notes={this.state.notes}
+          selected={this.state.selected}
+          delete={this.delete}
+          saveNote={this.saveNote}
+          changeSelected={this.changeSelected}
+          createNewNote={this.createNewNote} />
+      </div>
     )
   }
 
   render() {
     return (
       <div className="App">
-        {this.signedIn() ? this.renderMain() : <SignIn />}
+        {this.signedIn() ? this.renderMain() : <SignIn authHandler={this.authHandler}/>}
       </div>
     );
   }
