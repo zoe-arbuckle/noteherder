@@ -4,7 +4,6 @@
 Copy `base.example.js` to `base.js` and add the appropriate configuration for your firebase application
 
 ## Day 7 Homework - 
-
 Finish making components look good
 
 ### Bonus Credit
@@ -16,7 +15,7 @@ Finish making components look good
 ### Super Mega Bonus Credit Hyper Fighting
 * When you click a note in list, show the same data in the form
 
-# Day 8 Homework
+# Day 8 Homework - 
 Finish all bonus work from Day 7
 * Make a working delete butotn
 * When you click on a note in the list, populate form with date from the note
@@ -26,3 +25,10 @@ Finish all bonus work from Day 7
 
 # Super Mega Bonus Credit Hyper Fighting
 * Have a nice weekend! 
+
+# Day 9 Homework - 
+* Remove the "Save and new" button from the 'NoteForm' and assign the same functionality to the '+' button in the sidebar
+
+## Super Mega Bonus Credit
+* Add another authentication method to your app, such as Twitter, Facebook, Google, email/password, etc.
+* Remember, the Firebase docs are your friend
