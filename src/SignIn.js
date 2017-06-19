@@ -16,10 +16,10 @@ const SignIn = () => {
     return (
         <div>
             <button className="SignIn Github" onClick={authenticate}>
-                Sign In with Github
+                <i className="fa fa-github"> Sign In</i>
             </button>
             <button className="SignIn Google" onClick={authenticate}>
-                Sign In with Google
+                 <i className="fa fa-google"> Sign In</i>
             </button>
         </div>
     )
