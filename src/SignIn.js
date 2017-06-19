@@ -5,7 +5,7 @@ import { githubProvider, googleProvider, auth } from './base'
 const SignIn = () => {
     const authenticate = (e) => {
         let provider
-        if(e.target.classList.contains('.Github')){
+        if(e.currentTarget.classList.contains('Github')){
             provider = githubProvider
         }else{
             provider = googleProvider
