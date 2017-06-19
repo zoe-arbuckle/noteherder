@@ -36,6 +36,19 @@ class App extends Component {
     this.setState({ notes: notes })
   }
 
+  createNewNote = () => {
+    const note = {
+            id: `note-${Date.now()}`,
+            title: '',
+            body: '',
+    }
+
+    const notes = {...this.state.notes}
+    notes[note.id] = note
+
+    this.setState({ notes: notes, selected: note.id })    
+  }
+
   render() {
     return (
       <div className="App">
@@ -43,7 +56,8 @@ class App extends Component {
             selected={this.state.selected}
             delete={this.delete}
             saveNote={this.saveNote}
-            changeSelected={this.changeSelected}/>
+            changeSelected={this.changeSelected}
+            createNewNote={this.createNewNote}/>
       </div>
     );
   }
