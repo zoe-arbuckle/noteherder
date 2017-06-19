@@ -13,6 +13,8 @@ class NoteForm extends Component {
     componentWillReceiveProps = (nextProps) => {
         if(nextProps.selected !== this.state.note.id && nextProps.selected !== null){
             this.setState({note: nextProps.notes[nextProps.selected]})
+        } else if(nextProps.selected === null){
+            this.setState({note: this.blankNote()})
         }
     }
 
