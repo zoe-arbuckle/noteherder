@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import Main from './Main'
+import base from './base'
+import SignIn from './SignIn'
+import SignOut from './SignOut'
 
 class App extends Component {
   constructor() {
@@ -8,8 +11,18 @@ class App extends Component {
 
     this.state = {
       selected: null,
+      notes: {
 
+      },
     }
+  }
+
+  componentWillMount() {
+    base.syncState('notes',
+      {
+        context: this,
+        state: 'notes',
+      })
   }
 
   delete = () => {
@@ -51,15 +64,29 @@ class App extends Component {
     this.setState({ notes: notes, selected: note.id })
   }
 
+  signedIn = () => {
+    return true
+  }
+
+  renderMain() {
+    return (
+    <div>
+      <SignOut />
+      <Main notes={this.state.notes}
+        selected={this.state.selected}
+        delete={this.delete}
+        saveNote={this.saveNote}
+        changeSelected={this.changeSelected}
+        createNewNote={this.createNewNote} />
+      
+    </div>
+    )
+  }
+
   render() {
     return (
       <div className="App">
-        <Main notes={this.state.notes}
-          selected={this.state.selected}
-          delete={this.delete}
-          saveNote={this.saveNote}
-          changeSelected={this.changeSelected}
-          createNewNote={this.createNewNote} />
+        {this.signedIn() ? this.renderMain() : <SignIn />}
       </div>
     );
   }
