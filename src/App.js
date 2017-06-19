@@ -34,7 +34,7 @@ class App extends Component {
   }
 
   syncNotes = () => {
-    base.syncState(
+    this.ref = base.syncState(
       `${this.state.uid}/notes`,
       {
         context: this,
@@ -46,11 +46,9 @@ class App extends Component {
     if (this.state.notes) {
       const notes = { ...this.state.notes }
 
-      delete notes[this.state.selected]
+      notes[this.state.selected] = null
 
       this.setState({ notes: notes, selected: null, })
-
-      //TODO: fix
     }
   }
 
@@ -95,14 +93,17 @@ class App extends Component {
 
   signOut = () => {
     auth.signOut().then(() => {
-      this.setState({ uid: null })
+      base.removeBinding(this.ref)
+      this.setState({notes: {}})
     })
   }
 
   renderMain() {
+    //can clean up by putting actions in a const obj and using spread syntax to pass as props
     return (
       <div>
         <SignOut signOut={this.signOut} />
+
         <Main notes={this.state.notes}
           selected={this.state.selected}
           delete={this.delete}
