@@ -19,6 +19,20 @@ class App extends Component {
     }
   }
 
+  componentWillMount(){
+    auth.onAuthStateChanged(
+      (user) => {
+        if (user){
+          //finish signing in
+          this.authHandler(user)
+        } else{
+          //finish signing out
+          this.setState({uid: null})
+        }
+      }
+    )
+  }
+
   syncNotes = () => {
     base.syncState(
       `${this.state.uid}/notes`,
