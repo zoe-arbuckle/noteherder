@@ -10,7 +10,10 @@ const SignIn = () => {
         }else{
             provider = googleProvider
         }
-        auth.signInWithPopup(provider)
+        auth.signInWithPopup(provider).catch((error) => {
+            const email = error.email
+            const otherProviders = auth.fetchProvidersForEmail(email)
+        })
     }
 
     return (
