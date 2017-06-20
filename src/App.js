@@ -66,6 +66,7 @@ class App extends Component {
     notes[note.id] = note
 
     this.setState({ notes: notes })
+    this.setState({selected: note.id})
   }
 
   createNewNote = () => {
