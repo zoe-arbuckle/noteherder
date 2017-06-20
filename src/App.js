@@ -93,6 +93,7 @@ class App extends Component {
   }
 
   signOut = () => {
+    this.setState({selected: null})
     auth.signOut().then(() => {
       base.removeBinding(this.ref)
       this.setState({notes: {}})
