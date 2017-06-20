@@ -1,5 +1,6 @@
 import React from 'react'
 import './Sidebar.css'
+import SignOut from './SignOut'
 
 import quill from './quill.svg'
 import newHover from './new-hover.png'
@@ -15,6 +16,7 @@ const Sidebar = (props) => {
                 <img src={newHover} alt="New note" />
                 <img className="outline" src={newIcon} />
             </button>
+            <SignOut signOut={props.signOut} />
         </nav>
     )
 

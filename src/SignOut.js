@@ -1,11 +1,13 @@
 import React from 'react'
 import './SignOut.css'
 
-const SignOut = ({signOut}) => {
+const SignOut = ({ signOut }) => {
     return (
-        <button className="SignOut" onClick={signOut}>
-            SignOut
-        </button>
+        <div className="SignOut">
+            <button onClick={signOut}>
+                <i className="fa fa-sign-out"></i>
+            </button>
+        </div>
     )
 }
 

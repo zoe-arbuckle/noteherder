@@ -4,7 +4,6 @@ import './App.css';
 import Main from './Main'
 import base, { auth } from './base'
 import SignIn from './SignIn'
-import SignOut from './SignOut'
 
 class App extends Component {
   constructor() {
@@ -104,14 +103,13 @@ class App extends Component {
     //can clean up by putting actions in a const obj and using spread syntax to pass as props
     return (
       <div>
-        <SignOut signOut={this.signOut} />
-
         <Main notes={this.state.notes}
           selected={this.state.selected}
           delete={this.delete}
           saveNote={this.saveNote}
           changeSelected={this.changeSelected}
-          createNewNote={this.createNewNote} />
+          createNewNote={this.createNewNote} 
+          signOut={this.signOut}/>
       </div>
     )
   }
