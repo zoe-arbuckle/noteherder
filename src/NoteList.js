@@ -3,12 +3,13 @@ import React from 'react'
 import './NoteList.css'
 import Note from './Note'
 
-const NoteList = ({ notes }) => {
+const NoteList = ({ notes, removeNote }) => {
     return (
         <div className="NoteList">
-            <h3>Notes <button className="delete button" onClick={props.delete}>
-                <i className="fa fa-trash-o"></i>
-            </button>
+            <h3>Notes
+                <button className="delete button" onClick={removeNote}>
+                    <i className="fa fa-trash-o"></i>
+                </button>
             </h3>
 
             <ul id="notes">

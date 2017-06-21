@@ -13,9 +13,7 @@ class App extends Component {
     this.state = {
       uid: null,
       currentNote: this.blankNote(),
-      notes: {
-
-      },
+      notes: {},
     }
   }
 
@@ -24,8 +22,11 @@ class App extends Component {
     auth.onAuthStateChanged(
       (user) => {
         if (user) {
-          //finish signing in
+          // finished signing in
           this.authHandler(user)
+        } else {
+          // finished signing out
+          this.setState({ uid: null })
         }
       }
     )
@@ -33,7 +34,7 @@ class App extends Component {
 
   getUserFromLocalStorage() {
     const uid = localStorage.getItem('uid')
-    if(!uid) return
+    if (!uid) return
     this.setState({ uid })
   }
 
@@ -69,7 +70,6 @@ class App extends Component {
     }
     const notes = { ...this.state.notes }
     notes[note.id] = note
-
     this.setState({
       notes,
       currentNote: note,
@@ -80,21 +80,15 @@ class App extends Component {
   }
 
   removeNote = (note) => {
-    const notes = {...this.state.notes}
+    const notes = { ...this.state.notes }
     notes[note.id] = null
     this.resetCurrentNote()
     this.setState({ notes })
     this.props.history.push('/notes')
   }
 
-  changeSelected = (e) => {
-    if (e.target.closest('.note') !== null) {
-      this.setState({ selected: e.target.closest('.note').getAttribute('id') })
-    }
-  }
-
   signedIn = () => {
-    return (this.state.uid !== null)
+    return (this.state.uid)
   }
 
   authHandler = (user) => {
@@ -108,13 +102,13 @@ class App extends Component {
   signOut = () => {
     auth.signOut()
       .then(
-        () => {
-          this.stopSyncing()
-          this.setState({
-            notes: {},
-            currentNote: this.blankNote()
-          })
-        }
+      () => {
+        this.stopSyncing()
+        this.setState({
+          notes: {},
+          currentNote: this.blankNote()
+        })
+      }
       )
   }
 
@@ -127,7 +121,7 @@ class App extends Component {
   }
 
   render() {
-     const actions = {
+    const actions = {
       saveNote: this.saveNote,
       removeNote: this.removeNote,
       setCurrentNote: this.setCurrentNote,
@@ -145,9 +139,9 @@ class App extends Component {
           <Route path="/notes" render={() => (
             this.signedIn()
               ? <Main
-                  {...noteData}
-                  {...actions}
-                />
+                {...noteData}
+                {...actions}
+              />
               : <Redirect to="/sign-in" />
           )} />
           <Route path="/sign-in" render={() => (
