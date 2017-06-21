@@ -1,17 +1,20 @@
 import React from 'react'
+import { NavLink } from 'react-router-dom'
 
 const Note = ({ note }) => {
     return (
-        <li>
-            <div className="note" id={note.id}>
-                <div className="note-title">
-                    {note.title}
+        <NavLink to={`/notes/${note.id}`}>
+            <li>
+                <div className="note">
+                    <div className="note-title">
+                        {note.title}
+                    </div>
+                    <div className="note-body">
+                        <p>{note.body}</p>
+                    </div>
                 </div>
-                <div className="note-body">
-                    <p>{note.body}</p>
-                </div>
-            </div>
-        </li>
+            </li>
+        </NavLink>
     )
 }
 
