@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 import './App.css';
 import Main from './Main'
@@ -18,15 +19,15 @@ class App extends Component {
     }
   }
 
-  componentWillMount(){
+  componentWillMount() {
     auth.onAuthStateChanged(
       (user) => {
-        if (user){
+        if (user) {
           //finish signing in
           this.authHandler(user)
-        } else{
+        } else {
           //finish signing out
-          this.setState({uid: null})
+          this.setState({ uid: null })
         }
       }
     )
@@ -65,7 +66,7 @@ class App extends Component {
     notes[note.id] = note
 
     this.setState({ notes: notes })
-    this.setState({selected: note.id})
+    this.setState({ selected: note.id })
   }
 
   createNewNote = () => {
@@ -92,32 +93,31 @@ class App extends Component {
   }
 
   signOut = () => {
-    this.setState({selected: null})
+    this.setState({ selected: null })
     auth.signOut().then(() => {
       base.removeBinding(this.ref)
-      this.setState({notes: {}})
+      this.setState({ notes: {} })
     })
-  }
-
-  renderMain() {
-    //can clean up by putting actions in a const obj and using spread syntax to pass as props
-    return (
-      <div>
-        <Main notes={this.state.notes}
-          selected={this.state.selected}
-          delete={this.delete}
-          saveNote={this.saveNote}
-          changeSelected={this.changeSelected}
-          createNewNote={this.createNewNote} 
-          signOut={this.signOut}/>
-      </div>
-    )
   }
 
   render() {
     return (
       <div className="App">
-        {this.signedIn() ? this.renderMain() : <SignIn authHandler={this.authHandler} />}
+        <Switch>
+          <Route path='/notes' render={() => (
+            <div>
+              <Main notes={this.state.notes}
+                selected={this.state.selected}
+                delete={this.delete}
+                saveNote={this.saveNote}
+                changeSelected={this.changeSelected}
+                createNewNote={this.createNewNote}
+                signOut={this.signOut} />
+            </div>
+          )} />
+          <Route path='/sign-in' component={SignIn}/>
+          <Route render={() => <Redirect to='/notes'/> }/>
+        </Switch>
       </div>
     );
   }
