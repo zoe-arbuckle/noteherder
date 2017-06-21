@@ -26,6 +26,7 @@
   border: 0;
   color: #008BF8;
   cursor: pointer;
+  outline: none;
   }
   .Sidebar button img {
     position: absolute;
