@@ -24,6 +24,10 @@ class NoteForm extends Component {
         this.props.removeNote(this.props.currentNote)
     }
 
+    handleRemove = (e) => {
+        this.props.removeNote(this.props.currentNote)
+    }
+
 
     render() {
         return (
@@ -44,7 +48,11 @@ class NoteForm extends Component {
                             value={this.props.currentNote.body} >
                         </textarea>
                     </p>
-
+                    <button
+                        type="button"
+                        onClick={this.handleRemove}>
+                        <i className="fa fa-trash-o"></i>
+                    </button>
                 </form>
             </div >
         )
