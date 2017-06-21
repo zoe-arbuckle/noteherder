@@ -21,7 +21,9 @@ class NoteForm extends Component {
     }
 
     handleChanges = (e) => {
-        this.props.removeNote(this.props.currentNote)
+        const note = { ...this.props.currentNote }
+        note[e.target.name] = e.target.value
+        this.props.saveNote(note)
     }
 
     handleRemove = (e) => {
