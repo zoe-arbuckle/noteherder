@@ -1,13 +1,11 @@
 import React from 'react'
+
 import './SignIn.css'
 import { githubProvider, googleProvider, auth } from './base'
 
 const SignIn = () => {
     const authenticate = (provider) => {
-        auth.signInWithPopup(provider).catch((error) => {
-            const email = error.email
-            const otherProviders = auth.fetchProvidersForEmail(email)
-        })
+        auth.signInWithPopup(provider)
     }
 
     return (
