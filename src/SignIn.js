@@ -10,6 +10,7 @@ const SignIn = () => {
 
     return (
         <div>
+            <h3>Welcome to NoteHerder!</h3>
             <button className="SignIn Github" onClick={() => authenticate(githubProvider)}>
                 <i className="fa fa-github"> Sign In</i>
             </button>
