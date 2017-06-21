@@ -11,10 +11,13 @@ class NoteForm extends Component {
     }
 
     componentWillReceiveProps = (nextProps) => {
-        if(nextProps.selected !== this.state.note.id && nextProps.selected !== null){
-            this.setState({note: nextProps.notes[nextProps.selected]})
-        } else if(nextProps.selected === null){
-            this.setState({note: this.blankNote()})
+        if (nextProps.match.params.id !== this.state.note.id && nextProps.selected !== null) {
+            if (nextProps.notes[nextProps.match.params.id]){
+                this.setState({ note: nextProps.notes[nextProps.match.params.id] })
+            }
+
+        } else if (nextProps.selected === null) {
+            this.setState({ note: this.blankNote() })
         }
     }
 
@@ -30,7 +33,7 @@ class NoteForm extends Component {
         const note = this.state.note
         note[e.target.name] = e.target.value
 
-        this.setState({note: note}, () => {this.props.saveNote(this.state.note)})
+        this.setState({ note: note }, () => { this.props.saveNote(this.state.note) })
     }
 
 
@@ -39,10 +42,10 @@ class NoteForm extends Component {
             <div className="NoteForm">
                 <form onSubmit={this.handleSubmit}>
                     <p>
-                        <input type="text" 
-                            name="title" 
-                            placeholder="Title your note" 
-                            value={this.state.note.title} 
+                        <input type="text"
+                            name="title"
+                            placeholder="Title your note"
+                            value={this.state.note.title}
                             onChange={this.handleChanges} />
                     </p>
 
@@ -54,7 +57,7 @@ class NoteForm extends Component {
                             onChange={this.handleChanges}>
                         </textarea>
                     </p>
-                    
+
                 </form>
             </div>
         )
