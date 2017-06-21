@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import './Sidebar.css'
+
 import SignOut from './SignOut'
 import quill from './quill.svg'
 import newHover from './new-hover.png'
@@ -19,7 +20,7 @@ const Sidebar = ({ signOut }) => {
                     <img className="outline" src={newIcon} />
                 </button>
             </Link>
-            <SignOut signOut={props.signOut} />
+            <SignOut signOut={signOut} />
         </nav>
     )
 
